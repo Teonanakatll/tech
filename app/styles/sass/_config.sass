@@ -1,22 +1,34 @@
 // USER VARIABLES SECTION
 
-$accent: orange // Accent Color
-$fontsize: 16px // Body Font Size
+$accent: #F88500 // Accent Color
 $textcolor: #333 // Text Color
+$dark: #202328
+$deep: #171A1A
+$dark-header: #6F7784
+$dark-div: #2D3636
+$light-bg: #FAFAFA
+$light-disabled: #DBDEE3
+$light-div: #EAEDF0
+$middle-gray: rgba(#6F7A8B, .75)
+$text-light: #999
+$fontsize: 14px // Body Font Size
 $lineheight: 1.65 // Document Line Height
-$userfont: roboto-oh5, sans-serif // User Font Family
+$userfont: raleway-t, sans-serif // User Font Family
 $systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
 
 // Bootstrap compatible gutter variable => $gutter
-$grid-gutter-width: 30px
+$grid-gutter-width: 20px
 $gutter: $grid-gutter-width
 
 // IMPORT SECTION
 
 @import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
 @import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
-// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
-// @import 'node_modules/bootstrap/scss/_utilities.scss' // Optional Bootstrap Utilites
+@import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
+@import 'node_modules/bootstrap/scss/utilities.scss' // Optional Bootstrap Utilites
+
+@import 'app/libs/font-awesome/css/font-awesome.min'
+@import 'node_modules/swiper/swiper-bundle'
 
 // FONTS LOAD SECTION
 
@@ -27,10 +39,15 @@ $gutter: $grid-gutter-width
 		font-weight: $fweight
 		src: url($furl) format('woff2')
 
-@include font('roboto-oh5', normal, 400, '../fonts/roboto-regular-webfont.woff2')
-@include font('roboto-oh5', italic, 400, '../fonts/roboto-italic-webfont.woff2')
-@include font('roboto-oh5', normal, 700, '../fonts/roboto-bold-webfont.woff2')
-@include font('roboto-oh5', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2')
+@include font('roboto-t', normal, 300, '../fonts/roboto-v29-cyrillic-300.woff2')
+@include font('roboto-t', normal, 500, '../fonts/roboto-v29-cyrillic-500.woff2')
+@include font('roboto-t', normal, 700, '../fonts/roboto-v29-cyrillic-700.woff2')
+@include font('raleway-t', normal, 300, '../fonts/raleway-v22-cyrillic-300.woff2')
+@include font('raleway-t', normal, 500, '../fonts/raleway-v22-cyrillic-500.woff2')
+@include font('raleway-t', normal, 600, '../fonts/raleway-v22-cyrillic-600.woff2')
+@include font('raleway-t', normal, 700, '../fonts/raleway-v22-cyrillic-700.woff2')
+@include font('raleway-t', normal, 800, '../fonts/raleway-v22-cyrillic-800.woff2')
+@include font('raleway-t', normal, 900, '../fonts/raleway-v22-cyrillic-900.woff2')
 
 // GENERAL CSS SETTINGS
 
