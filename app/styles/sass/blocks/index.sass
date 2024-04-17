@@ -1,6 +1,50 @@
-//                               typography
-	
-	.container-fluid
+//                               typography start
+.middle-header
+	font-family: raleway-t, sans-serif
+	font-weight: 900
+	font-size: 18px
+	text-transform: uppercase
+
+.small-text
+	font-family: raleway-t, sans-serif
+	font-weight: 400
+	font-size: 14px
+	line-height: 1.7
+
+.regular-header
+	font-family: raleway-t, sans-serif
+	font-weight: 800
+	font-size: 29px
+
+.read-more
+	font-family: raleway-t, sans-serif
+	font-weight: 800
+	font-size: 15px
+	line-height: 1.7
+	text-decoration: underline
+
+.regular-text
+	font-family: raleway-t, sans-serif
+	font-weight: 400
+	font-size: 16px
+	line-height: 1.7
+
+.typography-header
+	font-family: raleway-t, sans-serif
+	font-weight: 800
+	font-size: 32px
+
+//                               typography end
+
+// делает изображения адаптивные
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+	&.img-width
+		width: 100%
+
+.container-fluid
 	max-width: 1280px
 	padding: 70px 80px
 
@@ -82,7 +126,7 @@ section
 			display: inline-block
 			padding: 2px 15px
 			margin-right: 10px
-			transition: background-color .25s ease
+			transition: background-color .25s ease-in-out
 			border-top-right-radius: 5px
 			border-bottom-left-radius: 5px
 			&.active, &:hover
@@ -92,7 +136,7 @@ section
 		a
 			text-decoration: none
 			color: #fffafa
-			transition: color .25s ease
+			transition: color .25s ease-in-out
 
 .soc
 	position: absolute
@@ -262,7 +306,350 @@ section
 			padding-top: 3px
 			display: flex
 			justify-content: end
-			
 
+//                                         section trust
+.section-trust
+	color: $dark-header
+	.container-deep
+		background-color: $deep
+		padding: 50px 80px
+	.trust-header
+		position: relative
+		margin-bottom: 40px
+		&::after
+			content: ''
+			z-index: 1
+			display: inline-block
+			position: absolute
+			height: 1px
+			width: 255px
+			bottom: -20px
+			left: 0
+			background-color: $dark-div
+	.trust-list
+		.trust-list__col
+			margin-right: px
+		span
+			color: #858f9f
+			font-family: roboto-t, sans-serif
+			font-size: 14px
+			font-weight: 700
+	.trust-content
+		text-align: right
+		.trust-content__title
+			width: 300px
+			float: right
+			margin-bottom: 20px
+		.trust-content__phone
+			float: right
+			font-family: roboto-t, sans-serif
+			color: #fff
+			font-weight: 200
+			font-size: 28px
+			margin-bottom: 18px
+			
+//                                       section projects
+.projects
+	height: 730px
+	position: relative
+	&-top
+		color: #fff
+		background-color: $dark
+		height: 350px
+		display: flex
+		position: relative
+		justify-content: center
+		p
+			max-width: 550px
+			margin-right: 50px
+			// margin-bottom: 0       
+			text-align: right
+		.decor-line
+			margin: 0
+			padding: 0
+			width: 1px
+			height: 120px
+			position: absolute
+			top: 65px
+			left: 50%
+			background-color: $dark-div
+		.right, h3
+			margin-left: 50px
+		p.right
+			text-align-last: left
+			font-weight: 900
+			color: $accent
+			font-size: 16px
+			text-transform: uppercase
+			margin-bottom: 13px
+		h3
+			font-weight: 900
+			font-size: 29px
+
+.projects-bot
+	position: relative
+	bottom: 170px
+	a.projects-item
+		text-decoration: none
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			display: block
+			height: 3px
+			width: 100%
+			background-color: $light-disabled
+			transition: background-color .25s ease-in-out
+		&:hover, &:focus
+			&::after
+				background-color: $accent
+			h3
+				text-decoration: underline
+			.dot
+				background-color: $accent
+			.overlay
+				&::before
+					opacity: 0.25
+			.pattern
+				.corner1
+					top: 20px
+					left: 20px
+					opacity: 1
+				.corner2
+					top: 20px
+					right: 20px
+					opacity: 1
+				.corner3
+					bottom: 20px
+					right: 20px
+					opacity: 1
+				.corner4
+					bottom: 20px
+					left: 20px
+					opacity: 1
+
+.projects-item-img
+	width: 100%
+	min-height: 200px
+
+//                                                     overlay
+.overlay
+	// псевдоелемент класса overlay  будет отвечать за оверлей при наведении
+	background-size: cover
+	background-position: center
+	position: relative
+	display: block
+	&::before
+		content: ''
+		background-color: $dark
+		position: absolute
+		inset: 0
+		opacity: 0
+		transition: opacity .25s ease-in-out
+	&:hover
+		&::before
+			opacity: 0.25
+
+//                                                             pattern
+.pattern
+	position: relative
+	&:hover
+		.corner1
+			top: 20px
+			left: 20px
+			opacity: 1
+		.corner2
+			top: 20px
+			right: 20px
+			opacity: 1
+		.corner3
+			bottom: 20px
+			right: 20px
+			opacity: 1
+		.corner4
+			bottom: 20px
+			left: 20px
+			opacity: 1
 		
+	.corner
+		position: absolute
+		z-index: 1
+		width: 10px
+		height: 10px
+		background-color: inherit
+		
+	.corner1
+		top: 0
+		left: 0
+		opacity: 0
+		border-left: 1px solid #fff
+		border-top: 1px solid #fff
+		transition: opacity .35s ease-in-out, left .35s ease-in-out, top .35s ease-in-out,
+	.corner2
+		top: 0
+		right: 0
+		opacity: 0
+		border-right: 1px solid #fff
+		border-top: 1px solid #fff
+		transition: opacity .35s ease-in-out, right .35s ease-in-out, top .35s ease-in-out,
+	.corner3
+		bottom: 0
+		right: 0
+		opacity: 0
+		border-right: 1px solid #fff
+		border-bottom: 1px solid #fff
+		transition: opacity .35s ease-in-out, bottom .35s ease-in-out, right .35s ease-in-out,
+	.corner4
+		bottom: 0
+		left: 0
+		opacity: 0
+		border-left: 1px solid #fff
+		border-bottom: 1px solid #fff
+		transition: opacity .35s ease-in-out, left .35s ease-in-out, bottom .35s ease-in-out,
+
+
+.projects-item__content
+	padding: 20px 30px 40px
+	&-adress
+		font-weight: 800
+		font-size: 14px
+		color: #a3a8b0
+		.map
+			margin-right: 11px
+			padding-bottom: 5px
+	&-header
+		h3
+			margin-left: 21px
+			margin-top: 10px
+			margin-bottom: 0
+			font-weight: 600
+			font-size: 20px
+			line-height: 1.3
+			color: $textcolor
+			transition: text-decoration .25s ease
+
+.dots
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	height: 35px
+	margin-top: 16px
+	padding-left: 2.5px
+	position: absolute
+	.dot
+		width: 5px
+		height: 5px
+		background-color: $light-disabled
+		border-radius: 50%
+		transition: background-color .25s ease-in-out
+
+.projects-button
+	position: absolute
+	bottom: 50px 
+	left: 43.5%
+
+//                                             section about
+.about
+	padding-bottom: 50px
+.about-left
+	padding-left: 38px
+	position: relative
+	height: 560px
+	&-decor
+		width: 235px
+		height: 280px
+		z-index: -1
+		position: absolute
+		background-color: rgba($dark, .7)
+		border-top-right-radius: 5px
+		border-bottom-left-radius: 5px
+	.about-image
+		width: 100%
+		height: 530px
+		left: 10px
+		top: 10px
+		display: flex
+		background-size: cover
+		background-position: center
+		position: relative
+		border-top-right-radius: 5px
+		border-bottom-left-radius: 5px
+	&-desc
+		background-color: rgba($dark, .9)
+		color: #fff
+		width: 240px
+		height: 95px
+		position: absolute
+		bottom: 60px
+		right: -25px
+		display: flex
+		align-items: center
+		padding: 0 25px
+		span
+			font-family: roboto-t
+			font-weight: 900
+			font-size: 52px
+		p
+			font-size: 20px
+			font-weight: 300
+			// width: 88px
+			line-height: 1.3
+			margin-bottom: 5px
+			margin-left: 20px
+
+.about-right
+	position: relative
+	top: -5px
+	.top
+		span
+			font-weight: 900
+			font-size: 16px
+			color: $accent
+			text-transform: uppercase
+		h3
+			margin-top: 13px
+		.dots-horizontal
+			position: relative
+			flex-direction: row
+			width: 35px
+			margin-top: 28px
+			height: 5px
+			margin-bottom: 25px
+			.dot
+				background-color: $accent
+		p
+			margin-bottom: 35px
+		
+.about-item
+	&-header
+		display: flex
+		margin-bottom: 30px
+	.icon
+		width: auto
+		height: 35px
+		rotate: -15deg
+		display: inline-block
+	.icon-wood
+		height: 40px
+	h4
+		font-weight: 800
+		font-size: 18px
+		width: 135px
+		margin-left: 20px
+		position: relative
+		bottom: 3px
+	p
+		width: 250px
+	.about-link
+		color: $textcolor
+		display: inline-block
+		transition: color .25s ease
+		&:hover
+			color: $accent
+
+
+
+
 
