@@ -47,6 +47,11 @@
 .container-fluid
 	max-width: 1280px
 	padding: 70px 80px
+	@include media-breakpoint-down(lg)
+		padding: 60px 50px
+	// @include media-breakpoint-down(md)
+	// 	padding: 40px 30px
+
 
 section
 	width: 100%
@@ -57,6 +62,8 @@ section
 	height: 650px
 	padding: 10px
 	position: relative
+	@include media-breakpoint-down(sm)
+		height: 600px
 
 .top-wrap
 	position: absolute
@@ -79,12 +86,66 @@ section
 		top: 100px
 		left: 0
 		width: 100%
+	@include media-breakpoint-down(md)
+		&::after
+			display: none
+
+.mobile-menu-button
+	display: none
+	text-transform: uppercase
+	cursor: pointer
+	color: rgba(#fff, .8)
+	transition: color .25s ease
+	padding-bottom: 9px
+	&:hover, &:focus
+		color: $accent
+	.fa
+		margin-right: 5px
+	@include media-breakpoint-down(md)
+		display: block
+	@include media-breakpoint-down(sm)
+		margin-top: 80px
+
+.mobile-menu
+	background-color: $dark
+	position: relative
+	margin-top: 10px
+	.top-menu
+		position: relative
+		display: block
+		padding: 0
+		margin: 0
+		li
+			height: 50px
+			display: block
+			text-transform: uppercase
+			padding: 0
+			margin: 0 15px
+			display: flex
+			justify-content: center
+			align-items: center
+			border-top-right-radius: 10px
+			border-bottom-left-radius: 10px
+			a
+				color: rgba(#fff, .7)
+				width: 100%
+				text-align: center
+				display: flex
+				align-items: center
+				justify-content: center
+		
 	
 .logo
 	position: absolute
 	left: 80px
 	color: #fff
 	text-decoration: none
+	@include media-breakpoint-down(lg)
+		left: 30px
+	@include media-breakpoint-down(md)
+		left: 40px
+		top: 30px
+
 	&-wood
 		font-family: raleway-t, sans-serif
 		text-transform: uppercase
@@ -118,25 +179,37 @@ section
 .menu
 	color: #fffafa
 	font-weight: 500
+	@include media-breakpoint-down(lg)
+		padding-left: 38px
+	@include media-breakpoint-down(md)
+		padding-left: 20px
+		margin-top: 80px
+		display: none
 	ul, li
 		padding: 0
 		margin: 0
 		list-style-type: none
 		li
 			display: inline-block
-			padding: 2px 15px
+			// 
 			margin-right: 10px
 			transition: background-color .25s ease-in-out
 			border-top-right-radius: 5px
 			border-bottom-left-radius: 5px
+			&.active
+				padding: 2px 15px
 			&.active, &:hover
 				background-color: $accent
 				a
 					color: #fff
-		a
-			text-decoration: none
-			color: #fffafa
-			transition: color .25s ease-in-out
+			a
+				display: block
+				width: 100%
+				height: 100%
+				padding: 2px 15px
+				text-decoration: none
+				color: #fffafa
+				transition: color .25s ease-in-out
 
 .soc
 	position: absolute
@@ -144,6 +217,12 @@ section
 	background-color: rgba(#fff, .25)
 	padding: 0 8px
 	border-radius: 10em
+	margin-top: 2.5px
+	@include media-breakpoint-down(lg)
+		right: 30px
+	@include media-breakpoint-down(md)
+		right: 40px
+		top: 30px
 	ul, li
 		padding: 0
 		margin: 0
@@ -151,18 +230,12 @@ section
 		li
 			display: inline-block
 			padding: 0 2.5px 2px
-			&.active
-				svg
-					path
-							fill: #fff
 			svg
 				height: 16px
 				fill: #fff
 				&.big
 					height: 15px
 					fill: #9a2f2f
-				&.fa-vk
-					padding-left: 3px
 			a
 				&:hover
 					svg
@@ -203,9 +276,7 @@ section
 	width: 100%
 	height: 100%
 	&__slide
-		display: flex
-		justify-content: center
-		flex-direction: column
+		margin-top: 195px
 		color: #fff
 	&__content
 		font-family: raleway-t, sans-serif
@@ -237,6 +308,35 @@ section
 		margin-top: 27px
 		padding: 15px 20px
 		line-height: 2.3
+	@include media-breakpoint-down(lg)
+		&__title
+			font-size: 50px
+		&__desc
+			line-height: 1.8
+			padding: 12px 15px
+		&__content
+			margin-left: 60px
+			width: 480px
+	@include media-breakpoint-down(md)
+		&__content
+			margin-left: 50px
+			width: 480px
+	@include media-breakpoint-down(sm)
+		&__slide
+			margin-top: 150px
+		&__content
+			margin-left: 20px
+			width: 300px
+		&__title
+			font-size: 35px
+
+		&__header
+			font-size: 14px
+			padding: 8px 10px
+		&__desc
+			font-size: 14px
+			padding: 8px 10px
+
 
 .nav-panel
 	position: absolute
@@ -250,6 +350,16 @@ section
 	align-items: center
 	background-color: $dark
 	border-top-left-radius: 10px
+	@include media-breakpoint-down(md)
+		width: 370px
+		height: 75px
+	@include media-breakpoint-down(sm)
+		width: 320px
+		height: 75px
+		margin-right: 5px
+		.slider-pagination-count
+			position: relative
+			left: 3px
 	.slider-navigation
 		position: relative
 		width: 47px		
@@ -269,6 +379,8 @@ section
 		flex: 0 0 180px
 		display: flex
 		align-items: center
+		position: relative
+		top: 1px
 		.swiper-scrollbar
 			background-color: rgba(#010101, .2)
 			height: 5px
@@ -312,7 +424,7 @@ section
 	color: $dark-header
 	.container-deep
 		background-color: $deep
-		padding: 50px 80px
+		// padding: 50px 80px
 	.trust-header
 		position: relative
 		margin-bottom: 40px
@@ -649,7 +761,262 @@ section
 		&:hover
 			color: $accent
 
+//                                     section partners
+.partners
+	.overlay
+		&::before
+			opacity: 0.85
+		h2
+			color: #fff
+			text-align: center
+			position: relative
+			margin-bottom: 50px
 
+//                                                    slider-partners
+.slider-partners
+	color: #fff
+	width: 100%
+	overflow: hidden
+	.swiper-slide
+		position: relative
+		text-align: center
+		height: 160px
+		p
+			font-weight: 300
+			position: absolute
+			bottom: 0
+			margin: 0
+		span
+			font-weight: 800
+			color: $accent
+		&-1
+			img
+				height: 61px
+				width: auto
+		&-2
+			img
+				position: relative
+				width: 162px
+				top: 6px
+		&-3
+			img
+				position: relative
+				width: 156px
+				top: 6px
+		&-4
+			img
+				width: 80px
+				position: relative
+				top: -5px
+		&-5
+			img
+				position: relative
+				height: 60px
+				width: auto
+				bottom: 5px
 
+//                                                    section blog
+.blog
+	h2
+		text-align: center
+		margin-bottom: 45px
+	.blog-item
+		.item-wrap
+			position: relative
+			width: 100%
+			height: 100%
+			padding: 15px
+			img			
+				border-top-right-radius: 5px
+				border-bottom-left-radius: 5px
+				margin-bottom: 25px
+			.date
+				background-color: $accent
+				padding: 5px 10px
+				color: #fff
+				font-size: 10px
+				font-weight: 800
+				text-transform: uppercase
+				border-top-right-radius: 5px
+				border-bottom-left-radius: 5px
+				position: absolute
+				line-height: 1
+				top: 25px
+				left: 25px
+				span
+					font-family: roboto-t, sans-serif
+					font-size: 10px
+		h3
+			font-weight: 800
+			font-size: 18px
+			text-transform: uppercase
+			padding-left: 15px
+			margin-bottom: 20px
+			&::before
+				content: ''
+				position: absolute
+				background-color: $accent
+				left: 15px
+				width: 3px
+				height: 42px
+		p
+			margin-bottom: 10px
+		a
+			color: $textcolor
+			rtansition: color .25s ease
+			&:hover
+				color: $accent
+	.item-more
+		width: 100%
+		height: 100%
+		padding: 15px
+		.overlay
+			width: 100%
+			height: 100%
+			border-top-right-radius: 5px
+			border-bottom-left-radius: 5px
+			display: flex
+			align-items: center
+			justify-content: center
+			&::before
+				background-color: #fff
+				opacity: 0.85
+				transition: opacity .5s ease
+			&:hover
+				&::before
+					opacity: 0
+				a
+					color: #fff
+		a
+			font-size: 18px
+			color: $textcolor
+			transition: color .5s ease
+			position: absolute
+			width: 200px
+			text-align: center
 
+.decor-borders
+	// text-align: center
+	display: flex
+	justify-content: center
+	margin-top: 45px
+	.border1, .border3
+		background-color: $light-disabled
 
+.decor-border
+	height: 5px
+	width: 25px
+	background-color: $accent
+	display: inline-block
+	border-top-right-radius: 5px
+	border-bottom-left-radius: 5px
+	margin: 0 5px
+
+//                                          footer
+footer
+	.container-footer
+		height: 410px
+		background-color: $deep
+		color: rgba(#fff, .7)
+		padding-top: 80px
+		position: relative
+		.middle-header
+			color: #fff
+			margin-bottom: 20px
+
+.footer-left
+	text-align: left
+	.logo-footer
+		position: relative
+		left: 0
+		color: rgba(#fff, .5)
+		margin-bottom: 40px
+		.logo-wood
+			&::before
+				border-color: rgba(#fff, .5)
+	h3
+		margin-top: 40px
+		margin-bottom: 20px
+	p
+		font-size: 13px
+
+.footer-menu
+	ul, li
+		padding: 0
+		margin: 0
+		list-style-type: none
+	li
+		margin-bottom: 10px
+		&.active
+			text-decoration: underline
+			color: $accent
+		a
+			text-decoration: none
+			display: inline-block
+			color: rgba(#fffafa, .7)
+			font-weight: 500
+			transition: color .25s ease, text-decoration .25s ease
+			&:hover
+				color: $accent
+				text-decoration: underline
+	.decor-border
+		margin: 0
+		margin-bottom: 20px
+
+.footer-right
+	position: relative
+	h3
+		margin-top: 0
+	.decor-border
+		margin: 0
+		margin-bottom: 20px
+	p
+		font-size: 13px
+		margin-bottom: 35px
+	.soc-footer
+		ul, li
+			padding: 0
+			margin: 0
+			list-style-type: none
+		li
+			display: inline-block
+			margin-right: 10px
+			&:hover
+				.soc-border
+					background-color: $accent
+					border-color: $accent
+				svg
+					path
+						fill: #fff
+			svg
+				height: 15px
+				width: 15px
+				position: relative
+				bottom: 1px
+				path
+					rtansition: fill .25s ease
+.soc-border
+	width: 40px
+	height: 40px
+	border: 1px solid rgba(#fff, .25)
+	border-top-right-radius: 5px
+	border-bottom-left-radius: 5px
+	display: flex
+	justify-content: center
+	align-items: center
+	transition: border-color .25s ease, background-color .25s ease
+
+.anchor-top
+	width: 50px
+	height: 50px
+	border: none
+	background-color: $accent
+	position: absolute
+	bottom: 20px
+	right: 45px
+	.fa
+		margin-bottom: 5px
+		&::before
+			font-size: 27px
+			color: #fff
+		

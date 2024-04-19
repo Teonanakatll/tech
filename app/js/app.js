@@ -8,6 +8,15 @@ import {gsap, Power2} from 'gsap'
 
 document.addEventListener('DOMContentLoaded', () => {
 
+	// прсле щбьекта .top-line добавляем div с классом mobile-menu и скрываем на разрешениях больше
+	$('.top-line').after('<div class="mobile-menu d-md-none">');
+	// клонопуем меню с помощю js и вставляем в div .mobile-menu
+	$('.top-menu').clone().appendTo('.mobile-menu');
+	// при клике на иконку мобильного меню слайдим
+	$('.mobile-menu-button').on('click', function() {
+		$('.mobile-menu').stop().slideToggle();
+	})
+
 	const swiperIMG = new Swiper('.slider-img', {
 		modules: [Parallax, Controller, Pagination],
 		loop: false,
@@ -89,5 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	swiperIMG.controller.control = swiperText
 	swiperText.controller.control = swiperIMG
+
+	const swiperPartners = new Swiper('.slider-partners', {
+		modules: [Mousewheel],
+		mousewheel: {
+			invert: false,
+		},
+		slidesPerView: 4,
+		spaceBetween: 15,
+		loop: true,
+		speed: 2000,
+	})
 
 })

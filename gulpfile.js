@@ -41,7 +41,10 @@ function browsersync() {
 }
 
 function scripts() {
-	return src(['app/js/*.js', '!app/js/*.min.js'])
+	return src(['node_modules/jquery/dist/jquery.min.js',
+		
+							'app/js/*.js',
+							'!app/js/*.min.js'])
 		.pipe(webpackStream({
 			mode: 'production',
 			performance: { hints: false },
