@@ -2,7 +2,7 @@
 // import '~/app/libs/mmenu/dist/mmenu.js'
 
 import Swiper from 'swiper'
-import { Parallax, Mousewheel, Controller, Pagination, Scrollbar, Navigation, Thumbs } from 'swiper/modules'
+import { Parallax, Mousewheel, Controller, Pagination, Scrollbar, Navigation, Thumbs, Autoplay } from 'swiper/modules'
 
 import {gsap, Power2} from 'gsap'
 
@@ -13,9 +13,32 @@ document.addEventListener('DOMContentLoaded', () => {
 	// клонопуем меню с помощю js и вставляем в div .mobile-menu
 	$('.top-menu').clone().appendTo('.mobile-menu');
 	// при клике на иконку мобильного меню слайдим
+	// $('.mobile-menu').slideUp();
 	$('.mobile-menu-button').on('click', function() {
+		
 		$('.mobile-menu').stop().slideToggle();
 	})
+
+	// закрытие меню при нажатии клавиши esc
+	$(document).on('keyup',function(e) {  // keyup перехватывает события нажатия кнопки
+		if(e.keyCode === 27) {
+			$('.mobile-menu').slideUp();
+		};
+			// функция закрывает меню при клике в любом месте экрана кроме поля поиска
+	}).on('click', function() {
+		$('.mobile-menu').slideUp();
+	})
+
+	// перехватываем и отменяем распространение события если клик происходит по враперу окна поиска
+	$('.mobile-menu-button').on('click', function(e) {
+		// Propagation — это распространение событий. Метод stopPropagation используется для
+		// предотвращения распространения (всплытия) событий, когда событие запускается на отдельном элементе.
+		// В JavaScript, когда событие запускается на одном элементе, оно всплывает вверх по дереву родительских
+		// элементов. Если элемент с событием находится внутри родительского контейнера, родитель тоже получает
+		// это событие.
+		e.stopPropagation();
+	})
+	
 
 	const swiperIMG = new Swiper('.slider-img', {
 		modules: [Parallax, Controller, Pagination],
@@ -100,11 +123,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	swiperText.controller.control = swiperIMG
 
 	const swiperPartners = new Swiper('.slider-partners', {
-		modules: [Mousewheel],
+		modules: [Mousewheel, Autoplay],
+		autoplay: {
+			delay: 1000,
+		},
 		mousewheel: {
 			invert: false,
 		},
-		slidesPerView: 4,
+		breakpoints: {
+			768: {
+				slidesPerView: 4,
+				spaceBetween: 15,
+			},
+			576: {
+				slidesPerView: 3,
+				spaceBetween: 10,
+			},
+		},
+		slidesPerView: 2,
 		spaceBetween: 15,
 		loop: true,
 		speed: 2000,
