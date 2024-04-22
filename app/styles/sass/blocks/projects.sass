@@ -116,3 +116,187 @@
 				opacity: 1
 			&::before
 				opacity: 0.9
+
+//                                       PROJECT PAGE
+.project
+	font-weight: 700
+	position: relative
+	.breadcrumb
+		color: #bdb5b5
+		height: 20px
+		position: relative
+		bottom: 5px
+		z-index: 2
+	ul, li
+		margin: 0
+		padding: 0
+		list-style-type: none
+	// ul
+
+	li
+		display: inline-block
+	a
+		display: inline-block
+		color: #ccc
+		font-weight: 600
+		margin-right: 25px
+		position: relative
+		transition: color .25s ease
+		&::after
+			content: '>'
+			position: absolute
+			right: -18px
+		&:hover, &:focus
+			color: $accent
+	.adress
+		color: #bdb5b5
+		text-align: right
+		position: relative
+		bottom: 25px
+	@include media-breakpoint-down(lg)
+		.breadcrumb
+			bottom: 25px
+		.adress
+			bottom: 10px
+	@include media-breakpoint-down(md)
+		.breadcrumb
+			margin-top: 15px
+			bottom: 45px
+	@include media-breakpoint-down(sm)
+		.breadcrumb
+			margin-top: 35px
+			bottom: 65px
+		.container-fluid
+			padding-bottom: 10px
+//                                       slider-project
+.slider-project
+	height: 630px
+	width: 100%
+	overflow: hidden
+	position: relative
+	@include media-breakpoint-down(lg)
+		height: 500px
+	@include media-breakpoint-down(md)
+		height: 450px
+	@include media-breakpoint-down(sm)
+		height: 400px
+	&::before
+		content: ''
+		position: absolute
+		height: 100%
+		background-color: rgba(#000, .05)
+		z-index: 2
+	&__slide
+		overflow: hidden
+		height: 100%
+	&__bg
+		height: 100%
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+
+//                                             slider-thumb
+.slider-thumb
+	margin-top: 5px
+	width: 100%
+	height: 80px
+	position: relative
+	overflow: hidden
+	&__slide
+		height: 100%
+		width: 145px
+		overflow: hidden
+		border: 2px solid $dark-header
+		&.swiper-slide-active
+			border-color: $accent
+	&__bg
+		height: 100%
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+
+.project-article
+	h1
+		margin: 60px 0
+		text-align: center
+		color: $textcolor
+	p, img
+		margin-bottom: 35px
+	.article-right
+		display: flex
+		justify-content: start
+		align-items: center
+		flex-direction: column
+		h3
+			font-weight: 800
+			text-transform: uppercase
+			font-size: 16px
+		img
+			height: 105px
+			margin-top: 28px
+			position: relative
+			border: 5px solid $light-disabled
+			border-radius: 10em
+			margin-bottom: 25px
+		span
+			font-size: 16px
+			font-weight: 700
+			margin-bottom: 15px
+		p
+			text-align: center
+			margin-bottom: 50px
+		.info
+			height: 304px
+			width: 100%
+			padding: 40px 15px
+			&-header
+				display: block
+				text-align: center
+			li
+				display: flex
+				justify-content: space-between
+				position: relative
+				overflow: hidden
+				.more-dots, p, span
+					line-height: 2.6
+				.more-dots
+					position: absolute
+					color: #ccc
+					left: 0
+					top: 1px
+				p, span
+					font-size: 14px
+					margin-bottom: 0
+					display: block
+					z-index: 1
+					background-color: #fff
+			
+				p
+					color: #666
+					font-weight: 500
+				span
+					i
+						font-style: normal
+						font-family: roboto-t, sans-serif
+	@include media-breakpoint-down(lg)
+		h1
+			margin: 50px 0
+		.article-right
+			padding: 0
+			.info
+				padding: 30px 0
+	@include media-breakpoint-down(md)
+		h1
+			margin-bottom: 25px
+		.article-right
+			padding: 0 10px
+			.info
+				padding: 0 30px
+				width: 400px
+	@include media-breakpoint-down(sm)
+		p, img
+			margin-bottom: 20px
+		.article-right
+			p.small-text
+				margin-bottom: 30px
+			

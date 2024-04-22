@@ -39,6 +39,51 @@ document.addEventListener('DOMContentLoaded', () => {
 		e.stopPropagation();
 	})
 	
+	const swiperProject = new Swiper('.slider-project', {
+		modules: [Parallax, Controller, Mousewheel, Thumbs],
+		mousewheel: {
+			invert: false,
+		},
+		thumbs: {
+			swiper: swiperThumb,
+		},
+		parallax: true,
+		loop: true,
+		speed: 2400,
+	})
+
+	const swiperThumb = new Swiper('.slider-thumb', {
+		modules: [Parallax, Controller, Mousewheel],
+		mousewheel: {
+			invert: false,
+		},
+		// делает слайды кликабельными
+		slideToClickedSlide: true,
+		// центрирует активный слайд
+		// centeredSlides: true,
+		loop: true,
+		speed: 2400,
+		parallax: true,
+		breakpoints: {
+			992: {
+				slidesPerView: 8,
+				spaceBetween: 5,
+			},
+			768: {
+				slidesPerView: 6,
+				spaceBetween: 5,
+			},
+			576: {
+				slidesPerView: 4,
+				spaceBetween: 5,
+			},
+		},
+		slidesPerView: 3,
+		spaceBetween: 5,
+	})
+
+	swiperProject.controller.control = swiperThumb
+	swiperThumb.controller.control = swiperProject
 
 	const swiperIMG = new Swiper('.slider-img', {
 		modules: [Parallax, Controller, Pagination],
