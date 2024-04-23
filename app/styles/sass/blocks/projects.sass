@@ -2,8 +2,11 @@
 	padding-top: 50px
 	padding-bottom: 50px
 	box-shadow: 0 10px 40px rgba(#000, .07)
+	position: relative
 	@include media-breakpoint-down(sm)
 		padding-bottom: 70px
+	.top-wrap
+		// width: inherit
 	.top-line
 		.mobile-menu-button
 			color: $textcolor
@@ -300,3 +303,123 @@
 			p.small-text
 				margin-bottom: 30px
 			
+//                                        PAGE SERVICES.HTML
+.services
+	.container-fluid
+		padding: 50px 60px 70px
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		.services-row
+			justify-content: center
+	&-description, h1
+		text-align: center
+	&-description
+		width: 555px
+		font-size: 15px
+		color: #999
+		margin-top: 25px
+		margin-bottom: 50px
+	&-content
+		.stretch
+			margin-bottom: 20px
+			padding: 0
+		&-item
+			display: block
+			text-decoration: none
+			position: relative
+			border: 1px solid $light-disabled
+			margin-bottom: 20px
+			height: 100%
+			&:hover
+				&::before
+					background-color: $accent
+				.item-content
+					h3
+						text-decoration: underline
+						color: $accent
+				.services-img
+					&::before
+						opacity: 0.3
+			&::before
+				content: ''
+				width: 3px
+				height: 40px
+				background-color: $light-disabled
+				position: absolute
+				left: -2px
+				top: 50%
+				margin-top: -20px
+				transition: background-color .25s ease
+			.row
+				height: 100%
+			.item-content
+				height: inherit
+				padding: 36px
+				padding-left: 30px
+				padding-right: 5px
+				h3
+					font-weight: 800
+					font-size: 18px
+					margin-bottom: 12px
+					color: $textcolor
+					transition: text-decoration .25s ease, color .25s ease
+				p
+					color: #7e7e7e
+					margin: 0
+				
+			.services-img
+				height: 100%
+	@include media-breakpoint-down(lg)
+		.container-fluid
+			padding: 50px 30px 60px
+		.item-content
+			padding-top: 30px
+			padding-bottom: 0px
+			padding-right: 0
+	@include media-breakpoint-down(md)
+		.item-wrap
+			margin-bottom: 20px
+		&-content-item
+			margin-bottom: 30px
+		.item-content
+			padding-left: 40px
+	@include media-breakpoint-down(sm)
+
+		&-description
+			width: 80vw
+		.container-fluid
+			padding: 30px 20px 30px
+		&-content-item
+			margin-bottom: 25px
+			padding: 20px
+		
+			&::before
+					height: 3px
+					width: 80px
+					top: -2px
+					margin-top: 0
+					left: 50%
+					margin-left: -40px
+			
+			.item-content
+				padding-bottom: 20px
+				text-align: center
+				padding: 30px 20px
+				p
+					margin-bottom: 0
+					width: 80vw
+		.services-img
+			height: 250px
+			position: relative
+			bottom: 250px
+
+section.btn
+	height: 145px
+	background-color: #d9d9d9
+	display: flex
+	align-items: center
+	justify-content: center
+	.button
+		padding: 10px 30px
