@@ -477,6 +477,8 @@
 			border-top-right-radius: 5px
 			border-bottom-left-radius: 5px
 			margin-bottom: 25px
+			&::before
+				opacity: 0
 	@include media-breakpoint-down(md)
 		.blog-content>.blog-wrap
 			.blog-item
@@ -525,3 +527,83 @@
 			margin-right: 20px
 		&-right
 			margin-left: 20px
+
+//                                          ABOUT.PAGE
+.about-section
+	.container-fluid
+		@include media-breakpoint-down(lg)
+			padding: 50px 25px
+			article
+				margin-left: 20px
+				.img-about
+					height: 450px
+		@include media-breakpoint-down(md)
+			article
+				margin-left: 0
+				.img-about
+					height: 400px
+		@include media-breakpoint-down(sm)
+			article
+				.img-about
+					height: 350px
+	article
+		margin-left: 36px
+		h1
+			margin-bottom: 25px
+		p
+			font-size: 15px
+			margin-bottom: 30px
+			&:first-of-type
+				margin-bottom: 35px
+			&:last-of-type
+				margin-bottom: 0
+		.img-about
+			height: 500px
+			width: 100%
+			margin-bottom: 35px
+			&::before
+				opacity: 0
+
+.aside
+	background-color: $light-bg
+	&-header
+		margin-bottom: 25px
+		margin-left: 30px
+		padding-top: 40px
+	&-menu,a
+		color: #666
+		ul, li
+			margin: 0
+			padding: 0
+			list-style-type: none
+		ul
+			li
+				padding: 9px 0 9px 30px
+				transition: background-color .25s ease, color .25s ease
+				&.active, &:hover
+					background-color: $accent
+					color: #fff
+					a
+						color: #fff
+		a
+			text-decoration: none
+			display: block
+			transiton: color .25s ease
+	&-header
+		font-weight: 700
+		font-size: 16px
+	@include media-breakpoint-down(lg)
+		&-header
+			margin-left: 10px
+		&-menu
+			ul>li
+				padding-left: 20px
+	@include media-breakpoint-down(md)
+		&-header
+			margin-left: 15vw	
+		&-menu
+			margin-bottom: 30px
+			ul>li
+				padding-top: 20px
+				padding-bottom: 20px
+				padding-left: 15vw
