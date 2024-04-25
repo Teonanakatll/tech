@@ -687,3 +687,49 @@
 		.about-item
 			p
 				width: 100%
+
+//                                          PARTNERS.HTML
+.partners-section
+	h1
+		margin-bottom: 40px
+	.partners-item
+		position: relative
+		margin-bottom: 40px
+		h3
+			font-weight: 800
+			font-size: 22px
+			color: $accent
+			margin-bottom: 10px
+		&-logo
+			background-color: $dark
+			width: 160px
+			height: 90px
+			border-top-right-radius: 5px
+			border-bottom-left-radius: 5px
+			display: flex
+			justify-content: center
+			align-items: center
+			position: absolute
+			left: 0
+			top: 0
+			img
+				width: 106px
+			.img-mazzucato, .img-fanfani
+				width: 130px
+			.img-cappelini
+				height: 60px
+				width: auto
+		&-desc
+			margin-left: 180px
+		@include media-breakpoint-down(sm)
+			display: flex
+			justify-content: center
+			align-items: center
+			flex-direction: column
+			&-logo
+				position: relative
+				margin-bottom: 30px
+			h3
+				text-align: center
+			&-desc
+				margin-left: 0
