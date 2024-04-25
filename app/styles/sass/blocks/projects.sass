@@ -529,7 +529,7 @@
 			margin-left: 20px
 
 //                                          ABOUT.PAGE
-.about-section
+.about-page
 	.container-fluid
 		@include media-breakpoint-down(lg)
 			padding: 50px 25px
@@ -599,11 +599,91 @@
 			ul>li
 				padding-left: 20px
 	@include media-breakpoint-down(md)
+		padding-left: 50px
+		padding-right: 50px
 		&-header
-			margin-left: 15vw	
+			margin-left: 10vw	
 		&-menu
 			margin-bottom: 30px
 			ul>li
 				padding-top: 20px
 				padding-bottom: 20px
-				padding-left: 15vw
+				padding-left: 10vw
+	@include media-breakpoint-down(sm)
+		padding-left: 0
+		padding-right: 0
+
+//                                         BENEFITS.PAGE
+.benefits-section
+	.container-fluid
+		padding: 70px 50px
+		@include media-breakpoint-down(lg)
+			padding: 50px 30px
+		@include media-breakpoint-down(md)
+			padding: 50px 20px
+		@include media-breakpoint-down(sm)
+			padding: 30px 10px
+
+.benefits
+	padding-left: 10px
+	h1
+		font-size: 31px
+		text-align: center
+		margin-bottom: 12px
+	.about-item
+		text-align: center
+		height: 100%
+		position: relative
+		border-bottom: 1px solid $light-div
+		padding-top: 37px
+		&-header
+			flex-direction: column
+			justify-content: center
+			align-items: center
+			margin-bottom: 0
+			h4
+				padding: 0
+				margin: 0
+				margin-bottom: 12px
+				width: 200px
+				
+			.icon, .icon-wood
+				margin-bottom: 19px
+			.icon
+				width: 57px
+			.icon-wood
+				margin-bottom: 14px
+				position: relative
+				bottom: 3px
+			.icon-tools
+				width: auto
+				height: 45px
+				position: relative
+				bottom: 6px
+				margin-bottom: 9px
+			.icon-delivery
+				width: 65px
+				height: 33px
+				margin-bottom: 21px
+		p
+			width: 100%
+		a
+			margin-bottom: 40px
+
+
+	@include media-breakpoint-down(lg)
+		.about-item
+			p
+				width: 100%
+	@include media-breakpoint-down(md)
+		.about-item
+			display: flex
+			justify-content: center
+			align-items: center
+			flex-direction: column
+			p
+				width: 450px
+	@include media-breakpoint-down(sm)
+		.about-item
+			p
+				width: 100%
