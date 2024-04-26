@@ -733,3 +733,107 @@
 				text-align: center
 			&-desc
 				margin-left: 0
+
+//                                       FEEDBACK.HTML
+.feedback-section
+	.container-fluid
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+	h1
+		text-align: center
+		font-weight: 900
+		font-size: 24px
+		text-transform: uppercase
+		margin-bottom: 25px
+	p
+		width: 450px
+		text-align: center
+		font-size: 15px
+		color: #999
+		margin-bottom: 50px
+		@include media-breakpoint-down(sm)
+			width: 300px
+	form
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+		width: 360px
+		.form-input
+			width: 100%
+			margin-bottom: 20px
+			border: 1px solid $light-disabled
+			min-height: 44px
+			border-top-right-radius: 5px
+			border-bottom-left-radius: 5px
+			padding-left: 15px
+			transition: border-color .25s ease
+			&:active, &:focus, &:hover
+				border-color: $accent
+				padding-left: 20px
+				&::placeholder
+					color: $textcolor
+			
+			&::placeholder
+				font-size: 15px
+				color: #888
+				transition: color .25s ease
+		textarea.form-input
+			min-height: 100px
+			padding-top: 10px
+			margin-bottom: 25px
+			&::placeholder
+				padding-top: 0
+		.button
+			padding: 10px 30px
+		@include media-breakpoint-down(sm)
+			width: 300px
+
+.contacts-section
+	background-color: $dark
+	color: #fff
+	text-align: center
+	border-bottom: 5px solid #34383e
+	.container-fluid
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+	h1
+		margin-bottom: 20px
+	.adress
+		color: #a3a8b0
+		font-size: 15px
+		font-weight: 400
+		margin-bottom: 21px
+		.map
+			position: relative
+			height: 12px
+			right: 5px
+			bottom: 2px
+	.phone
+		font-family: roboto-t, sans-serif
+		font-size: 28px
+		font-weight: 300
+		white-space: nowrap
+		margin-bottom: 50px
+	.img-map
+		margin: 0	105px
+		height: 523px
+		border-top-right-radius: 10px
+		border-bottom-left-radius: 10px
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+	@include media-breakpoint-down(lg)
+		.img-map
+			margin: 0 55px
+	@include media-breakpoint-down(md)
+		.img-map
+			margin: 0
+			height: 400px
+	@include media-breakpoint-down(sm)
+		.img-map
+			width: 320px
