@@ -235,17 +235,19 @@ section
 		li
 			display: inline-block
 			padding: 0 2.5px 2px
-			svg
+			svg, img
 				height: 16px
-				fill: #fff
+			img
+				opacity: .8
+				z-index: 100
+				&:hover
+					opacity: 1.5
+
 				&.big
 					height: 15px
-					fill: #9a2f2f
-			a
-				&:hover
-					svg
-						path
-							fill: #fff
+			// &:hover
+			// 	path
+			// 		fill: #fff
 
 //                                  .slider-img
 .slider-img
@@ -799,6 +801,7 @@ section
 			padding-right: 80px
 		.about-right
 			right: 45px
+
 	@include media-breakpoint-down(md)
 		margin-top: -140px
 		.about-left
@@ -915,10 +918,12 @@ section
 			.dot
 				background-color: $accent
 		p
-			margin-bottom: 35px
+			margin-bottom: 55px
 		
 	
 .about-item
+	position: relative
+	height: 100%
 	&-header
 		display: flex
 		margin-bottom: 30px
@@ -939,10 +944,18 @@ section
 		bottom: 3px
 	p
 		width: 220px
+		margin-bottom: 60px
 	.about-link
 		color: $textcolor
-		display: inline-block
+		display: block
 		transition: color .25s ease
+		margin-bottom: 0 !important
+		position: absolute
+		text-align: center
+		left: 50%
+		bottom: 0
+		transform: translateX(-50%)
+
 		&:hover
 			color: $accent
 		
@@ -1254,16 +1267,17 @@ footer
 				.soc-border
 					background-color: $accent
 					border-color: $accent
-				svg
-					path
-						fill: #fff
-			svg
+				img
+					opacity: 1
+
+			img
 				height: 15px
 				width: 15px
 				position: relative
 				bottom: 1px
-				path
-					rtansition: fill .25s ease
+				opacity: .5
+				transition: opacity .25s ease-out
+
 	@include media-breakpoint-down(lg)
 		.soc-footer
 			li

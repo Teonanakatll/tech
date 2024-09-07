@@ -1,7 +1,7 @@
 .sect-menu
 	padding-top: 50px
 	padding-bottom: 50px
-	box-shadow: 0 10px 40px rgba(#000, .07)
+	box-shadow: 0 10px 40px rgba(#000, 0.2)
 	position: relative
 	@include media-breakpoint-down(sm)
 		padding-bottom: 70px
@@ -23,14 +23,14 @@
 				&:hover
 					color: #fff
 		.soc
+			background-color: rgba(0, 0, 0, .4)
 			li
-				svg
-					path
-						fill: $middle-gray
-			a:hover
-				svg
-					path
-						fill: $deep
+				a
+					img
+						opacity: .8
+				&:hover
+					img
+						opacity: 1
 	
 
 //                                        PAGE PROJECTS.HTML
@@ -206,12 +206,23 @@
 	position: relative
 	overflow: hidden
 	&__slide
+		background-color: #000
 		height: 100%
 		width: 145px
 		overflow: hidden
 		border: 2px solid $dark-header
-		&.swiper-slide-active
+		position: relative
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			background-color: #000
+			opacity: 0.6
+		&.swiper-slide-thumb-active
 			border-color: $accent
+			opacity: 1
+			&::after
+				opacity: 0
 	&__bg
 		height: 100%
 		background-position: center
@@ -329,12 +340,15 @@
 		.stretch
 			margin-bottom: 20px
 			padding: 0
+			.item-wrap
+				margin-bottom: 20px
 		&-item
 			display: block
 			text-decoration: none
 			position: relative
 			border: 1px solid $light-disabled
 			margin-bottom: 20px
+
 			height: 100%
 			&:hover
 				&::before
@@ -440,11 +454,16 @@
 			width: 100%
 			border: 15px solid $light-disabled
 			margin-bottom: 45px
+			&::before
+				opacity: 0.05
+			&:hover
+				&::before
+					opacity: 0.2
 		p
 			text-align: center
 			font-size: 15px
 			color: #999
-			width: 560px
+			width: 90%
 			margin-bottom: 35px
 			&:last-child
 				margin-bottom: 0
@@ -486,7 +505,8 @@
 					max-width: 450px
 //                                        pagination
 .pagination-section
-	margin-top: 70px
+	// margin-top: 70px
+	margin-bottom: 70px
 	text-align: center
 	font-size: 15px
 	@include media-breakpoint-down(lg)
@@ -635,7 +655,7 @@
 		height: 100%
 		position: relative
 		border-bottom: 1px solid $light-div
-		padding-top: 37px
+		padding-top: 75px
 		&-header
 			flex-direction: column
 			justify-content: center
@@ -792,11 +812,12 @@
 			width: 300px
 
 .contacts-section
-	background-color: $dark
 	color: #fff
 	text-align: center
-	border-bottom: 5px solid #34383e
+	
 	.container-fluid
+		background-color: $dark
+		border-bottom: 5px solid #34383e
 		display: flex
 		justify-content: center
 		align-items: center
@@ -822,6 +843,8 @@
 	.img-map
 		margin: 0	105px
 		height: 523px
+		width: 100%
+		overflow: hidden
 		border-top-right-radius: 10px
 		border-bottom-left-radius: 10px
 		background-position: center
@@ -837,3 +860,28 @@
 	@include media-breakpoint-down(sm)
 		.img-map
 			width: 320px
+
+//                                   flex
+.flex
+	background-color: $deep
+	// height: 500px
+	display: flex
+	justify-content: start
+	align-items: start
+	// flex-direction: row
+	.right
+		flex-direction: column
+	.item
+		background-color: lighten($dark, 30%)
+		border: 2px solid $accent
+		color: #fff
+		padding: 5px
+		font-size: 18px
+		font-family: roboto-t, sans-serif
+		text-align: center
+		// width: 250px
+		// height: 60px
+	// .item2
+	// 	align-self: start
+	// .item3
+	// 	order: -2
