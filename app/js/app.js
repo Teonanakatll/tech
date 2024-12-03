@@ -1,196 +1,195 @@
-// // Import vendor jQuery plugin example
-// import '~/app/libs/mmenu/dist/mmenu.js'
 
-import Swiper from 'swiper'
-import { Parallax, Mousewheel, Controller, Pagination, Scrollbar, Navigation, Thumbs, Autoplay } from 'swiper/modules'
+import { initSmoothScroll, destroySmoothScroll, mobileMenu, scrollOnSlider, anchor } from "./components/utils.js";
+import { homePage, projectPage } from "./components/sliders.js";
 
-import {gsap, Power2} from 'gsap'
+import barba from "@barba/core";
 
-document.addEventListener('DOMContentLoaded', () => {
+import { gsap, Power2 } from "gsap";
 
-	// прсле щбьекта .top-line добавляем div с классом mobile-menu и скрываем на разрешениях больше
-	$('.top-line').after('<div class="mobile-menu d-md-none">');
-	// клонопуем меню с помощю js и вставляем в div .mobile-menu
-	$('.top-menu').clone().appendTo('.mobile-menu');
-	// при клике на иконку мобильного меню слайдим
-	// $('.mobile-menu').slideUp();
-	$('.mobile-menu-button').on('click', function() {
-		
-		$('.mobile-menu').stop().slideToggle();
-	})
-
-	// закрытие меню при нажатии клавиши esc
-	$(document).on('keyup',function(e) {  // keyup перехватывает события нажатия кнопки
-		if(e.keyCode === 27) {
-			$('.mobile-menu').slideUp();
-		};
-			// функция закрывает меню при клике в любом месте экрана кроме поля поиска
-	}).on('click', function() {
-		$('.mobile-menu').slideUp();
-	})
-
-	// перехватываем и отменяем распространение события если клик происходит по враперу окна поиска
-	$('.mobile-menu-button').on('click', function(e) {
-		// Propagation — это распространение событий. Метод stopPropagation используется для
-		// предотвращения распространения (всплытия) событий, когда событие запускается на отдельном элементе.
-		// В JavaScript, когда событие запускается на одном элементе, оно всплывает вверх по дереву родительских
-		// элементов. Если элемент с событием находится внутри родительского контейнера, родитель тоже получает
-		// это событие.
-		e.stopPropagation();
-	})
-	
+document.addEventListener("DOMContentLoaded", () => {
 
 
-	const swiperThumb = new Swiper('.slider-thumb', {
-		modules: [Parallax, Controller, Mousewheel],
-		mousewheel: {
-			invert: false,
-		},
-		// делает слайды кликабельными
-		// slideToClickedSlide: true,
-		// центрирует активный слайд
-		centeredSlides: true,
-		// чтобы небыло пропусков вконце группы тамбов
-		slidesPerGroup: 1,
-		// centeredSlidesBounds: true,
-		loop: true,
-		speed: 500,
-		breakpoints: {
-			992: {
-				slidesPerView: 8,
-				spaceBetween: 5,
-			},
-			768: {
-				slidesPerView: 6,
-				spaceBetween: 5,
-			},
-			576: {
-				slidesPerView: 4,
-				spaceBetween: 5,
-			},
-		},
-		slidesPerView: 3,
-		spaceBetween: 5,
-	})
 
-	const swiperProject = new Swiper('.slider-project', {
-		modules: [Parallax, Controller, Mousewheel, Thumbs],
-		mousewheel: true,
-		thumbs: {
-			swiper: swiperThumb
-		},
-		slidesPerGroupAuto: true,
-		centeredSlides: true,
-		parallax: true,
-		loop: true,
-		speed: 2400,
-	})
+  barba.init({
+    sync: true,
+    cacheIgnore: false,
+    transitions: [
+      {
+        name: "opacity-transition",
+        leave(data) {
+					destroySmoothScroll(); // Уничтожаем Locomotive Scroll перед сменой страницы
+          gsap.to(data.current.container, {
+            opacity: 0,
+            duration: .8,
+            filter: "blur(10px)",
+            x: -500,
+            ease: "power2.Out"
+          });
+        },
+        enter(data) {
+          if (data.next.namespace === "projects") {
+            gsap.from(data.next.container, {
+              opacity: 0,
+              x: 500,
+              scale: .95,
+              duration: .7,
+              ease: "power2.inOut"
+            })
+          } else if (data.next.namespace === "services") {
+            gsap.fromTo(data.next.container, 
+              { opacity: 0, scale: .8 },
+              { opacity: 1, scale: 1, duration: .8, ease: "bounce.out" }
+          )
+          } else if (data.next.namespace === "blog") {
+            gsap.fromTo(data.next.container,
+              {opacity:0, rotate: -180, scale: .7},
+              {
+                opacity:1,
+                rotate: 0,
+                scale: 1,
+                duration: 1,
+                ease: "back.out(1.7)"
+              }
+            )
+          } else if (data.next.namespace === "about") {
+            gsap.fromTo(data.next.container, 
+              { opacity: 0, scale: .8 },
+              { opacity: 1, scale: 1, duration: .8, ease: "elastic.out(1, .75)" }
+            )
+          } else if (data.next.namespace === "benefits") {
+            gsap.from(data.next.container, 
+              { opacity: 0, scale: .5, duration: 1.2, ease: "elastic.out(1, .75" }
+            )
+          } else if (data.next.namespace === "partners") {
+            gsap.fromTo(data.next.container, 
+              { opacity: 0, rotate: 180},
+              {opacity: 1, rotate: 0, duration: 1, ease: "power4.out"}
+            )
+          } else if (data.next.namespace === "feedback") {
+            gsap.from(data.next.container, {
+              opacity: 0,
+              filter: "blur(10px)",
+              duration: 1,
+              ease: "power2.out"
+            });
 
+          } else {
+            gsap.from(data.next.container, {
+              opacity: 0,
+              duration: .9,
+              // scale: 3,
+              // rotate: 360,
+            });
+          }
 
-	const swiperIMG = new Swiper('.slider-img', {
-		modules: [Parallax, Controller, Pagination],
-		loop: false,
-		speed: 2400,
-		parallax: true,
-		// для вывода количества слайдов в счётчик
-		pagination: {
-			el: '.slider-pagination-count .total',
-			// определяем кастомный тип отображения пагинации
-			type: 'custom',
-			// определяем функцию для возврато количества слайдов
-			renderCustom: function(swiper, current, total) {
-				// для вывода количества слайдов необходимо воспользоваться интерполяцией для вывода переменной total переданной в функцию
-				return `0${total}`
-			}
-		}
-	})
+        },
+        afterEnter(data) {
 
-	const swiperText = new Swiper('.slider-text', {
-		modules: [Parallax, Controller, Mousewheel, Scrollbar, Navigation],
-		// при loop:true скроллбар не работает
-		loop: false,
-		speed: 2400,
-		parallax: true,
-		mousewheel: {
-			invert: false,
-		},
-		// pagination: {
-		// 	el: '.swiper-pagination',
-		// 	clickable: true,
-		// },
-		scrollbar: {
-			el: '.swiper-scrollbar',
-			draggable: true,
-		},
-		navigation: {
-			prevEl: '.swiper-button-prev',
-			nextEl: '.swiper-button-next',
-		},
-	})
+        },
+      },
+    ],
+    prevent: ({ el }) => {
+      // Игнорируем переходы для якорных ссылок
+      return el.hasAttribute("href") && el.getAttribute("href").startsWith("#");
+    },
+    views: [
+      {
+        namespace: "home",
+        // beforeEnter() {
+        // },
+        afterEnter() {
+          console.log("afterEnter triggered in 'home'");
+          // scrollOnSlider();
+          mobileMenu();
+          homePage();
+          setTimeout(() => initSmoothScroll(), 300); // Инициализация через 300 мс
+          anchor();
+        },
+      },
+      {
+        namespace: "projects",
+        afterEnter() {
+					initSmoothScroll();
+          // scroll.update(); // Обновление Locomotive Scroll
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "project",
+        afterEnter() {
+					initSmoothScroll();
+					scrollOnSlider();
+          mobileMenu();
+          projectPage();
+          anchor();
+        },
+      },
+      {
+        namespace: "post",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "services",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+          gsap.from('.services-content-item', {
+            opacity: 0,
+            y: 250,
+            stagger: .4,
+            duration: .6,
+            ease: "bounce.out",
+            delay: .7
+          })
+        },
+      },
+      {
+        namespace: "blog",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "about",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "benefits",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "partners",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+      {
+        namespace: "feedback",
+        afterEnter() {
+					initSmoothScroll();
+          mobileMenu();
+          anchor();
+        },
+      },
+    ],
+  });
 
-	// Slide count
-	// заносим в переменную селектор счётчика
-	let curnum = document.querySelector('.slider-pagination-count .current')
-
-	// функция при срабатывании события смены слайда
-	swiperText.on('slideChange', function() {
-		// определяем переменную с индексом текущего слайда
-		let ind = swiperText.realIndex + 1
-		// применяем gsap к селектору из переменной curnum, длительность анимации 0.2 с
-		gsap.to(curnum, .2, {
-			force3D: true,
-			// уводим текущую цифру с номером слайда наверх
-			y: -10,
-			opacity: 0,
-			// параметр скорости анимации
-			ease: Power2.easeOut,
-			// событие gsap, после завершения анимации (вверх) устанавливаем координаты селектору вниз для отрисовки поднятия цифры
-			onCompleate: function() {
-				gsap.to(curnum, .1, {
-					force3D: true,
-					y:10,
-				})
-				// и присваиваем селектору номер следующего слайда
-				curnum.innerHTML = `0${ind}`
-			}
-		})
-		// gsap для появления цифры
-		gsap.to(curnum, .2, {
-			force3D: true,
-			y: 0,
-			opacity: 1,
-			// параметр скорости анимации
-			ease: Power2.easeOut,
-			// устанавливаем задержку чтобы события не происходили одновременно
-			delay: .3
-		})
-	})
-
-	swiperIMG.controller.control = swiperText
-	swiperText.controller.control = swiperIMG
-
-	const swiperPartners = new Swiper('.slider-partners', {
-		modules: [Mousewheel, Autoplay],
-		autoplay: {
-			delay: 1000,
-		},
-		mousewheel: {
-			invert: false,
-		},
-		breakpoints: {
-			768: {
-				slidesPerView: 4,
-				spaceBetween: 15,
-			},
-			576: {
-				slidesPerView: 3,
-				spaceBetween: 10,
-			},
-		},
-		slidesPerView: 2,
-		spaceBetween: 15,
-		loop: true,
-		speed: 2000,
-	})
-
-})
+});

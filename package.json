@@ -31,6 +31,8 @@
 		"gulp-less": "^5.0.0",
 		"gulp-less-glob": "^1.0.0",
 		"gulp-noop": "^1.0.1",
+		"gulp-notify": "^5.0.0",
+		"gulp-plumber": "^1.2.1",
 		"gulp-postcss": "^9.0.1",
 		"gulp-rsync": "0.1.0",
 		"gulp-sass": "^5.1.0",
@@ -44,8 +46,10 @@
 		"webpack-stream": "^7.0.0"
 	},
 	"dependencies": {
+		"@barba/core": "^2.10.3",
 		"gsap": "^3.12.5",
 		"jquery": "^3.7.1",
+		"locomotive-scroll": "^5.0.0-beta.21",
 		"swiper": "^11.1.1"
 	}
 }

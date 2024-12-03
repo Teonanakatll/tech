@@ -27,6 +27,9 @@ import concat        from 'gulp-concat'
 import rsync         from 'gulp-rsync'
 import {deleteAsync} from 'del'
 
+import plumber       from 'gulp-plumber'
+import notify        from 'gulp-notify'
+
 function browsersync() {
 	browserSync.init({
 		server: {
@@ -40,11 +43,21 @@ function browsersync() {
 	})
 }
 
+const plumberScriptsConfig = {
+	errorHandler: notify.onError({
+		title: 'SCRIPTS',
+		message: 'Error <%= error.message %>',
+		// sound: false
+	})
+}
+
+
 function scripts() {
 	return src(['node_modules/jquery/dist/jquery.min.js',
 		
 							'app/js/*.js',
 							'!app/js/*.min.js'])
+		.pipe(plumber(plumberScriptsConfig))
 		.pipe(webpackStream({
 			mode: 'production',
 			performance: { hints: false },

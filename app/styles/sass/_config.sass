@@ -83,3 +83,39 @@ body
 	min-width: 320px
 	position: relative
 	overflow-x: hidden
+
+
+//																					barba.js
+//barba container
+main
+	position: relative
+
+// айтем с градиентным фоном
+.transparent-item
+	position: relative
+	top: 0
+	left: 600px
+	border-radius: 15px
+	background: transparent /* Полупрозрачный фон */
+	backdrop-filter: blur(10px) /* Блюр на фоне */
+	// border: 3px solid transparent /* Сначала прозрачная граница */
+	// border-image: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5)) /* Градиент для границы */
+	// border-image-slice: 1 /* Применение градиента к границе */
+	padding: 20px
+	box-shadow: 0 0 0 3px transparent, 0 0 0 6px linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5))
+	width: 300px
+	height: 200px
+	z-index: 100
+// .transparent-item::before
+// 	content: ''
+// 	position: absolute
+// 	top: -5px
+// 	left: -5px
+// 	right: -5px
+// 	bottom: -5px
+// 	background: linear-gradient(45deg, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5))
+// 	border-radius: 15px /* Округляем углы у псевдоэлемента */
+// 	z-index: -1
+
+.flex
+	background-image: url('../../images/dist/portfolio/insallation-1.jpg')

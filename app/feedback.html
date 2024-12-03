@@ -1,42 +1,52 @@
 <!--#include virtual="parts/header.html" -->
 
-<div class="container-fluid sect-menu">
-	<!--#include virtual="parts/menu.html" -->
-</div>
+<body data-barba="wrapper">
 
-<section class="feedback-section">
-	<div class="container-fluid">
 
-		<h1>Обратная связь</h1>
-		<p>Задайте нам любой вопрос, напишите или сделайте заказ. Наши менеджеры ответят вам в любое время.</p>
+	<main data-barba="container" data-barba-namespace="feedback">
 
-		<form action="#">
-			<!-- <main class="form-wrap"> -->
-				<input type="text" class="form-input" type="text" placeholder="Ваше имя...">
-				<input type="text" class="form-input" type="text" placeholder="Ваш телефон...">
-				<textarea name="Message" class="form-input" placeholder="Сообщение..."></textarea>
-				<div class="button" type="submit">Отправить сообщение</div>
-			<!-- </main> -->
-		</form>
+		<div class="container-fluid sect-menu">
+			<!--#include virtual="parts/menu.html" -->
+		</div>
 
-	</div>
-</section>
+		<section class="feedback-section">
+			<div class="container-fluid">
 
-<section class="contacts-section">
-	<div class="container-fluid">
+				<h1>Обратная связь</h1>
+				<p>Задайте нам любой вопрос, напишите или сделайте заказ. Наши менеджеры ответят вам в любое время.</p>
 
-		<h2 class="regular-header">Наши контакты</h2>
+				<form action="#">
+					<!-- <main class="form-wrap"> -->
+					<input type="text" class="form-input" type="text" placeholder="Ваше имя...">
+					<input type="text" class="form-input" type="text" placeholder="Ваш телефон...">
+					<textarea name="Message" class="form-input" placeholder="Сообщение..."></textarea>
+					<div class="button" type="submit">Отправить сообщение</div>
+					<!-- </main> -->
+				</form>
 
-			<div class="adress">
-				<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
-					Москва, пр. Скулатова, 224, оф. 3.
 			</div>
+		</section>
 
-			<div class="phone">+7 (995) 246-75-35</div>
-			
-			<div class="img-map" >
-				<iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaf4432ff26786cb8e3f1d65122c2888dc30295e59249d5fe0590828b5ed67b05&amp;source=constructor" width="800" height="500" frameborder="0"></iframe>			</div>
-	</div>
-</section>
+		<section class="contacts-section">
+			<div class="container-fluid">
 
-<!--#include virtual="parts/footer.html" -->
+				<h2 class="regular-header">Наши контакты</h2>
+
+				<div class="adress">
+					<img src="/images/dist/icons-src/mapmarker.svg" alt="alt" class="map">
+					Москва, пр. Скулатова, 224, оф. 3.
+				</div>
+
+				<div class="phone">+7 (995) 246-75-35</div>
+
+				<div class="img-map">
+					<iframe
+						src="https://yandex.ru/map-widget/v1/?um=constructor%3Aaf4432ff26786cb8e3f1d65122c2888dc30295e59249d5fe0590828b5ed67b05&amp;source=constructor"
+						width="800" height="500" frameborder="0"></iframe>
+				</div>
+			</div>
+		</section>
+
+		<!--#include virtual="parts/footer.html" -->
+		
+	</main>
